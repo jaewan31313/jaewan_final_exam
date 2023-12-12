@@ -1,0 +1,19 @@
+from functools import cmp_to_key
+
+def solution(numbers):
+    if not (1 <= len(numbers) <= 100000):
+        return "숫자 리스트의 길이는 1 이상 100000 이하여야 합니다."
+    
+    for num in numbers:
+        if not (0 <= num <= 1000):
+            return "각 숫자는 0 이상 1000 이하여야 합니다."
+    numbers = list(map(str, numbers))
+    def compare(x, y):
+        return int(y + x) - int(x + y)
+    numbers.sort(key=cmp_to_key(compare))
+    answer = ''.join(numbers)
+    return str(int(answer)) if answer[0] != '0' else '0'
+
+
+numbers = [8, 30, 17, 2, 23]
+print(solution(numbers))

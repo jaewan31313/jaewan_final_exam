@@ -1,0 +1,10 @@
+def solution(age):
+    a = "abcdefghij"
+    result = ""
+    while 0 < age <= 1000:
+        remainder = age % 10
+        result = a[remainder] + result
+        age //= 10
+    return result[::-1]  # 결과 문자열을 거꾸로 반환
+
+print('PROGRAMMERS-' + solution(857))  # 출력: 'PROGRAMMERS-djh'
